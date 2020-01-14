@@ -1,0 +1,10 @@
+---
+apt:
+  common_packages:
+    - dirmngr
+    - apt-transport-https
+    - lsb-release
+    - ca-certificates
+    - python-pip
+    - python-apt
+    - aptitude

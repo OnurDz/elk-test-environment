@@ -1,0 +1,7 @@
+---
+- name: Making sure common packages are installed
+  apt:
+    package: '{{ apt.common_packages }}'
+    state: present
+    update_cache: yes
+  become: yes

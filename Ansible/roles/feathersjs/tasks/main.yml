@@ -1,0 +1,7 @@
+---
+- name: Making sure FeathersJS is installed
+  npm:
+    name: '{{ feathersjs.npm.name }}'
+    global: yes
+    state: present
+  become: yes

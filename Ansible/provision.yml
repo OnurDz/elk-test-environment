@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+  - common
+  - ros
+  - nodejs
+  - feathersjs
+  - pm2
+  - mongodb

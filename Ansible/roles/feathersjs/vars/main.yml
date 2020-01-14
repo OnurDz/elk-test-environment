@@ -1,0 +1,4 @@
+---
+feathersjs:
+  npm:
+    name: '@feathersjs/feathers'
