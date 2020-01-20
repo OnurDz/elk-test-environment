@@ -7,3 +7,5 @@
   - feathersjs
   - pm2
   - mongodb
+  - mserver_mockup
+  - mlogger

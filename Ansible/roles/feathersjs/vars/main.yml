@@ -1,4 +1,10 @@
 ---
 feathersjs:
   npm:
-    name: '@feathersjs/feathers'
+    packages:
+    - '@feathersjs/feathers'
+    - '@feathersjs/errors'
+    - '@feathersjs/express'
+    - '@feathersjs/socketio'
+    - 'mongoose'
+    - 'feathers-mongoose'

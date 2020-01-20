@@ -18,3 +18,13 @@
     state: present
     update_cache: yes
   become: yes
+
+- name: Generating Catkin workspace in ansible-directory
+  file:
+    path: '{{ ros.file.ws_path }}'
+    state: directory
+
+- name: Initializing catkin workspace
+  shell: 'source /opt/ros/melodic/setup.bash && cd {{ ros.file.ws_path }}/.. && catkin_make'
+  args:
+    executable: /bin/bash

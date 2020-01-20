@@ -9,6 +9,9 @@ ros:
     filename: ros-latest.list
   apt:
     package: desktop-full
+  file:
+    ws_path: '{{ common.file.ansible_path }}/catkin_ws/src'
 
 ubuntu:
   codename: bionic
+
