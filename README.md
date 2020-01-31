@@ -23,7 +23,7 @@ This mockup environment uses 3 ubuntu/bionic64 virtual machines.
         Listens port `9004`<br>
         Sends filtered logs and plain metrics to `11.0.0.10:9200 elasticsearch@cloud` (defined in ./ansible/roles/logstash/files/logstash.conf)
 - cloud:<br>
-    IP: `11.0.0.10`
+    IP: `11.0.0.10`<br>
     Runs:<br>
     - Elasticsearch:<br>
         Runs on port `9200` (defined in ./ansible/roles/elasticsearch/files/elasticsearch.yml)<br>
