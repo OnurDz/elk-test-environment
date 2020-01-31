@@ -1,9 +1,13 @@
 ## Usage
-Simply execute `vagrant up` in project directory.
+- Execute `vagrant up` in project directory.
+- Launch Kibana in your browser by typing `11.0.0.10:5601` to address field.
+- Create index patterns `*metricbeat*` and `*logstash*`
+- Metrics dashborads should be available in Dashboards panel on the left sidebar.
+- Logs should be available on Discover panel.
 
 ## Network Information
 This mockup environment uses 3 ubuntu/bionic64 virtual machines.
-- slave:<br>
+- **slave:**<br>
     IP: `10.0.0.10`<br>
     Runs:
     - Filebeat:<br>
@@ -11,7 +15,7 @@ This mockup environment uses 3 ubuntu/bionic64 virtual machines.
     - Metricbeat:<br>
         Sends metric data to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/metribeat/files/metricbeat.yml)<br>
         Sets Kibana dashboards up
-- master:<br>
+- **master:**<br>
     IP: `10.0.0.11`<br>
     Runs:
     - Filebeat:<br>
@@ -22,7 +26,7 @@ This mockup environment uses 3 ubuntu/bionic64 virtual machines.
     - Logstash:<br>
         Listens port `9004`<br>
         Sends filtered logs and plain metrics to `11.0.0.10:9200 elasticsearch@cloud` (defined in ./ansible/roles/logstash/files/logstash.conf)
-- cloud:<br>
+- **cloud:**<br>
     IP: `11.0.0.10`<br>
     Runs:<br>
     - Elasticsearch:<br>
@@ -47,3 +51,9 @@ Ports:<br>
 Kibana: 5601 (user-defined default)<br>
 Elasticsearch: 9200 (user-defined default)<br>
 Logstash: 9004 (user-defined)<br>
+
+
+## # TO DO
+- Elasticsearch system configuration. (https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html)
+- Security configuration. (username and password, SSL authentication)
+- _Collect which metrics?_
