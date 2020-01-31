@@ -6,30 +6,30 @@ This mockup environment uses 3 ubuntu/bionic64 virtual machines.
 - slave:<br>
     IP: `10.0.0.10`<br>
     Runs:
-    - Filebeat:
-        Sends syslog to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/filebeat_slave/files/filebeat.yml)
-    - Metricbeat:
-        Sends metric data to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/metribeat/files/metricbeat.yml)
+    - Filebeat:<br>
+        Sends syslog to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/filebeat_slave/files/filebeat.yml)<br>
+    - Metricbeat:<br>
+        Sends metric data to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/metribeat/files/metricbeat.yml)<br>
         Sets Kibana dashboards up
 - master:<br>
     IP: `10.0.0.11`<br>
     Runs:
-    - Filebeat:
+    - Filebeat:<br>
         Sends syslog to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/filebeat_master/files/filebeat.yml)
-    - Metricbeat:
-        Sends metric data to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/metribeat/files/metricbeat.yml)
+    - Metricbeat:<br>
+        Sends metric data to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/metribeat/files/metricbeat.yml)<br>
         Sets Kibana dashboards up
-    - Logstash:
-        Listens port `9004`
+    - Logstash:<br>
+        Listens port `9004`<br>
         Sends filtered logs and plain metrics to `11.0.0.10:9200 elasticsearch@cloud` (defined in ./ansible/roles/logstash/files/logstash.conf)
 - cloud:<br>
     IP: `11.0.0.10`
     Runs:<br>
-    - Elasticsearch:
-        Runs on port `9200` (defined in ./ansible/roles/elasticsearch/files/elasticsearch.yml)
+    - Elasticsearch:<br>
+        Runs on port `9200` (defined in ./ansible/roles/elasticsearch/files/elasticsearch.yml)<br>
         Single cluster, single node; discoverable by master and cloud
-    - Kibana:
-        Runs on port `5601` (defined in ./ansible/roles/kibana/files/kibana.yml)
+    - Kibana:<br>
+        Runs on port `5601` (defined in ./ansible/roles/kibana/files/kibana.yml)<br>
         Connects to `11.0.0.1:9200 elasticsearch@cloud` (defined in ./ansible/roles/kibana/files/kibana.yml)
 
 Purpose of the other software is generating a mockup environment.<br>
