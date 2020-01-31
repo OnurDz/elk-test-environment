@@ -1,0 +1,27 @@
+---
+- name: Making sure logstash is installed
+  apt:
+    package: '{{ logstash.apt.package }}'
+    update_cache: yes
+  become: yes
+
+- name: Configuring logstash
+  copy:
+    src: '{{ logstash.config.src }}'
+    dest: '{{ logstash.config.dest }}'
+    mode: '0755'
+  become: yes
+
+- name: Configuring pipeline
+  copy:
+    src: '{{ logstash.pipeline.src }}'
+    dest: '{{ logstash.pipeline.dest }}'
+    mode: '0660'
+  become: yes
+  
+- name: Enabling and starting Logstash service
+  systemd:
+    name: logstash
+    enabled: yes
+    state: restarted
+  become: yes

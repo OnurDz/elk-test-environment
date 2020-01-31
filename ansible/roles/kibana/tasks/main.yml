@@ -1,0 +1,21 @@
+---
+- name: Making sure kibana is installed
+  apt:
+    package: '{{ kibana.apt.package }}'
+    update_cache: yes
+  become: yes
+
+- name: Configuring kibana
+  copy:
+    src: '{{ kibana.config.src }}'
+    dest: '{{ kibana.config.dest }}'
+    group: kibana
+    mode: '0660'
+  become: yes
+
+- name: Enabling and restarting Kibana service
+  systemd:
+    name: kibana
+    enabled: true
+    state: restarted
+  become: yes

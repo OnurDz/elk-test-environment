@@ -9,3 +9,6 @@
   - mongodb
   - mserver_mockup
   - mlogger
+  - elastic_apt
+  - filebeat_master
+  - metricbeat

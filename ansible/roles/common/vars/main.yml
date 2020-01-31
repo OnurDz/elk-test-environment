@@ -9,6 +9,8 @@ common:
       - python-pip
       - python-apt
       - aptitude
+      - curl
+      - software-properties-common
 
   file:
     ansible_path: '$HOME/ansible-files'

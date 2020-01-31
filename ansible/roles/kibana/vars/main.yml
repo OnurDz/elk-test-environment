@@ -1,0 +1,9 @@
+---
+kibana:
+  apt:
+    package: kibana
+  config:
+    src: kibana.yml
+    dest: /etc/kibana/kibana.yml
+  ip: 11.0.0.10
+  port: 5601

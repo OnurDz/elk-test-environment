@@ -1,0 +1,24 @@
+---
+- name: Making sure metricbeat is installed
+  apt:
+    package: '{{ metricbeat.apt.package }}'
+    update_cache: yes
+  become: yes
+
+- name: Configuring metricbeat
+  copy:
+    src: '{{ metricbeat.config.src }}'
+    dest: '{{ metricbeat.config.dest }}'
+    mode: '0755'
+  become: yes
+
+- name: Enabling and starting metricbeat service
+  systemd:
+    name: metricbeat
+    enabled: yes
+    state: restarted
+  become: yes
+
+- name: Loading Kibana dashboards
+  shell: metricbeat setup --dashboards '{{ kibana.ip }}:{{ kibana.port }}'
+  become: yes

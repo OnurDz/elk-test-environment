@@ -1,0 +1,45 @@
+---
+- name: Making sure Elasticsearch is installed
+  apt:
+    package: '{{ elasticsearch.apt.package }}'
+    update_cache: yes
+  become: yes
+
+- name: Configuring jvm
+  copy:
+    src: '{{ elasticsearch.jvm.src }}'
+    dest: '{{ elasticsearch.jvm.dest }}'
+    group: elasticsearch
+    mode: '0660'
+  become: yes
+
+- name: Configuring Elasticsearch
+  copy:
+    src: '{{ elasticsearch.config.src }}'
+    dest: '{{ elasticsearch.config.dest }}'
+    group: elasticsearch
+    mode: '0660'
+  become: yes
+
+- name: Creating data path
+  file:
+    path: '{{ elasticsearch.path.data }}'
+    state: directory
+    owner: elasticsearch
+    group: elasticsearch
+  become: yes
+
+- name: Removing memlock limit
+  copy:
+    src: override.conf
+    dest: /etc/systemd/system/elasticsearch.service.d/
+    mode: '0744'
+  become: yes
+
+- name: Enabling and starting elasticsearch service
+  systemd:
+    name: elasticsearch
+    enabled: yes
+    state: restarted
+    daemon_reload: yes
+  become: yes
