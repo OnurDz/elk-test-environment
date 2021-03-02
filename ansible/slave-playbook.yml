@@ -4,5 +4,5 @@
   - ros
   - mlogger
   - elastic_apt
-  - filebeat_slave
+  - filebeat_puppet
   - metricbeat

@@ -7,11 +7,11 @@
 
 ## Network Information
 This mockup environment uses 3 ubuntu/bionic64 virtual machines.
-- **slave:**<br>
+- **puppet:**<br>
     IP: `10.0.0.10`<br>
     Runs:
     - Filebeat:<br>
-        Sends syslog to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/filebeat_slave/files/filebeat.yml)<br>
+        Sends syslog to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/filebeat_puppet/files/filebeat.yml)<br>
     - Metricbeat:<br>
         Sends metric data to `10.0.0.11:9004 Logstash@master` (defined in ./ansible/roles/metribeat/files/metricbeat.yml)<br>
         Sets Kibana dashboards up
@@ -37,13 +37,13 @@ This mockup environment uses 3 ubuntu/bionic64 virtual machines.
         Connects to `11.0.0.1:9200 elasticsearch@cloud` (defined in ./ansible/roles/kibana/files/kibana.yml)
 
 Purpose of the other software is generating a mockup environment.<br>
-`common`, `elastic_apt`, `kibana`, `elasticsearch`, `logstash`, `filebeat_master`, `filebeat_slave`, and `metricbeat` roles are sufficient for setting up ELK Stack.
+`common`, `elastic_apt`, `kibana`, `elasticsearch`, `logstash`, `filebeat_master`, `filebeat_puppet`, and `metricbeat` roles are sufficient for setting up ELK Stack.
 
 
 TLDR;
 
 IP addresses:<br>
-slave: 10.0.0.10<br>
+puppet: 10.0.0.10<br>
 master: 10.0.0.11<br>
 cloud: 11.0.0.10<br>
 

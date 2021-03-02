@@ -46,23 +46,23 @@ Vagrant.configure("2") do |config|
         end
     end
 
-    config.vm.define "slave" do |slave|
-        slave.vm.box = "ubuntu/bionic64"
-        slave.vm.hostname = "mlog-slave"
-        slave.vm.network "private_network", ip: "10.0.0.10"
-        slave.vm.provider "virtualbox" do |vb|
-            vb.name = "mlog_slave"
+    config.vm.define "puppet" do |puppet|
+        puppet.vm.box = "ubuntu/bionic64"
+        puppet.vm.hostname = "mlog-puppet"
+        puppet.vm.network "private_network", ip: "10.0.0.10"
+        puppet.vm.provider "virtualbox" do |vb|
+            vb.name = "mlog_puppet"
             vb.memory = "1024"
         end
-        slave.vm.provision "shell", inline: <<-SHELL
+        puppet.vm.provision "shell", inline: <<-SHELL
             command -v python
             if [ $? -eq 1 ] ; then
                 apt-get update
                 apt-get install -y python
             fi
         SHELL
-        slave.vm.provision "ansible" do |ansible|
-            ansible.playbook = "ansible/slave-playbook.yml"
+        puppet.vm.provision "ansible" do |ansible|
+            ansible.playbook = "ansible/puppet-playbook.yml"
         end
     end
 
